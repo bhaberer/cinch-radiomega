@@ -38,10 +38,11 @@ module Cinch::Plugins
       raw_url = Cinch::Toolbox.get_html_element(gist_url,
                                                 "##{gist_file_name} a.raw-url",
                                                 :css_full)
-      return [] if raw_url.nil?
 
       raw_url = 'https://gist.github.com' + raw_url[/href=\"(.+)"\s/, 1]
       open(raw_url).read.split("\n")
+    rescue NoMethodError
+      []
     end
 
     def gist_url

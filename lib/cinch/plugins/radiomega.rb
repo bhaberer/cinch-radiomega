@@ -34,17 +34,14 @@ module Cinch::Plugins
     end
 
     def get_today_gist
-      debug gist_url
       # Get the gist contents for today's list
       raw_url = Cinch::Toolbox.get_html_element(gist_url,
                                                 "##{gist_file_name} a.raw-url",
                                                 :css_full)
-      raw_url = 'https://gist.github.com' + raw_url[/href=\"(.+)"\s/, 1]
-      debug raw_url
-      list = open(raw_url)
+      return [] if raw_url.nil?
 
-      # Convert to an Array
-      list.read.split("\n")
+      raw_url = 'https://gist.github.com' + raw_url[/href=\"(.+)"\s/, 1]
+      open(raw_url).read.split("\n")
     end
 
     def gist_url

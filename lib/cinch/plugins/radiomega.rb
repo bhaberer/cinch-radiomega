@@ -7,8 +7,9 @@ module Cinch::Plugins
   class Radiomega
     include Cinch::Plugin
 
-    match /(.+) - (.+)/
-    set :prefix, /\A\+\+/
+    match /(.+) - (.+)/,  prefix: /\A\+\+/,
+                          method: :log_song
+    match /setlist/,      method: :setlist
 
     def initialize(*args)
       super
@@ -16,7 +17,12 @@ module Cinch::Plugins
                 user: config[:gist_user] }
     end
 
-    def execute(m, title, artist)
+    def setlist(m)
+      url = "#{gist_url}##{gist_file_name}"
+      m.user.notice "The setlist for today is at #{url}"
+    end
+
+    def log_song(m, title, artist)
       current = get_today_gist
       current << build_song_string(m, title, artist)
 

@@ -4,10 +4,11 @@ require 'cinch/toolbox'
 require 'jist'
 
 module Cinch::Plugins
+  # Cinch plugin to gist songs
   class Radiomega
     include Cinch::Plugin
 
-    match /(.+) - (.+)/,  prefix: /\A\+\+/,
+    match /(.+) - (.+)/,  prefix: /\A\+\+\s/,
                           method: :log_song
     match /setlist/,      method: :setlist
 
@@ -18,7 +19,7 @@ module Cinch::Plugins
     end
 
     def setlist(m)
-      url = "#{gist_url}##{gist_file_name}"
+      url = [gist_url, gist_file_name].join
       m.user.notice "The setlist for today is at #{url}"
     end
 
@@ -35,8 +36,8 @@ module Cinch::Plugins
 
     def build_song_string(m, title, artist)
       nick = m.user.nick
-      time = m.time.strftime("%R")
-      "#{time} < #{nick}> ++ #{title} - #{artist}"
+      time = m.time.strftime('%R')
+      [time, "<#{nick}>", '++', title, '-', artist].join(' ')
     end
 
     def get_today_gist

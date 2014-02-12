@@ -19,7 +19,7 @@ module Cinch::Plugins
     end
 
     def setlist(m)
-      url = [gist_url, gist_file_name].join
+      url = [gist_url, gist_file_name].join('#')
       m.user.notice "The setlist for today is at #{url}"
     end
 

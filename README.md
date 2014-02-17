@@ -1,6 +1,8 @@
 # Cinch::Radiomega
 
-TODO: Write a gem description
+Cinch plugin to interact with bhaberer/radiomega
+
+This will be all but useless to other people.
 
 ## Installation
 

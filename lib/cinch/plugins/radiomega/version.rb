@@ -3,7 +3,7 @@ module Cinch
   module Plugins
     # Versioning info
     class Radiomega
-      VERSION = '0.0.6'
+      VERSION = '0.0.7'
     end
   end
 end

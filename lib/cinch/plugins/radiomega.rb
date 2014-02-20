@@ -2,8 +2,8 @@
 require 'cinch'
 require 'cinch/toolbox'
 require 'jist'
-require "net/http"
-require "uri"
+require 'net/http'
+require 'uri'
 
 module Cinch::Plugins
   # Cinch plugin to gist songs

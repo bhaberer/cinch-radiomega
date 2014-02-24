@@ -20,11 +20,11 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler',          '~> 1.3'
   spec.add_development_dependency 'rake'
-  gem.add_development_dependency  'rspec'
-  gem.add_development_dependency  'coveralls'
-  gem.add_development_dependency  'cinch-test'
+  spec.add_development_dependency  'rspec'
+  spec.add_development_dependency  'coveralls'
+  spec.add_development_dependency  'cinch-test'
 
   spec.add_dependency             'jist',             '~> 1.5.1'
   spec.add_dependency             'cinch',            '~> 2.0.12'
-  spec.add_dependency             'cinch-toolbox',    '~> 1.1.0'
+  spec.add_dependency             'cinch-toolbox',    '~> 1.1.1'
 end
